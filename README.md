@@ -1,16 +1,37 @@
 # Deauville Festival du Rire 2027
 
-Programme platform for the festival (ECE OOP track).
+Programme platform: command line, rules, and HTTP API for the festival website.
+
+## Install and run
 
 ```bash
 uv sync
-uv run main.py
-uv run main.py programme 2027-06-11
-uv run main.py now 2027-06-11T21:00
-uv run main.py artist max-pellerin
+uv run deauville
+uv run deauville programme 2027-06-11
+uv run deauville now 2027-06-11T21:00
+uv run deauville serve
+uv run pytest
+uv build
 ```
 
-## Known bugs
+`serve` starts the API on http://127.0.0.1:8000 (website at `/`, docs at `/docs`).
+Use `--data PATH` for another data file.
 
-None. A festival day ends at 06:00: the festival day of a show is the date
-of its start minus 6 hours, so After Hours (01:00) belongs to Friday.
+## Structure
+
+| Module | Role |
+| --- | --- |
+| `errors.py` | `FestivalError` family → HTTP statuses |
+| `slugs.py`, `times.py` | slug, festival day (−6 h), 30-minute gap |
+| `models.py` | `Venue`, `Artist`, abstract `Performance`, `SoloShow`, `Lineup`, `Workshop` |
+| `festival.py` | owns the data and every scheduling rule |
+| `storage.py` | `Storage` interface, JSON and memory |
+| `cli.py` | command line |
+| `api.py` | `create_app(storage)` |
+
+Rules live in `Festival.check` and in each performance kind's constructor.
+With a database, only a new `Storage` would change.
+
+## Known limits
+
+No admin UI is shipped (`web/admin/`); write routes are available through `/docs`.

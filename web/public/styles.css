@@ -1,0 +1,112 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0 auto;
+  max-width: 880px;
+  padding: 24px;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.5;
+  color: #22201c;
+  background: #fff;
+}
+
+header { border-bottom: 3px solid #a31621; margin-bottom: 24px; }
+
+.dates { margin: 0; color: #5b564c; }
+
+h1 { margin: 4px 0 12px; font-size: 2rem; }
+
+h2 { margin-top: 32px; font-size: 1.4rem; }
+
+h3 { font-size: 1.1rem; }
+
+a { color: #a31621; }
+
+button, select {
+  font: inherit;
+  padding: 6px 12px;
+  border: 1px solid #c9c2b4;
+  border-radius: 6px;
+  background: #fff;
+}
+
+button { cursor: pointer; margin-right: 8px; }
+
+button.active, button:hover { background: #a31621; border-color: #a31621; color: #fff; }
+
+:focus-visible { outline: 2px solid #a31621; outline-offset: 2px; }
+
+#programme { display: grid; gap: 12px; margin-top: 12px; }
+
+.card {
+  border: 1px solid #e2ddd4;
+  border-radius: 8px;
+  padding: 12px 16px;
+}
+
+.card .time { font-weight: 700; margin-right: 8px; }
+
+.card .kind {
+  display: inline-block;
+  font-size: 0.8rem;
+  border: 1px solid #c9c2b4;
+  border-radius: 20px;
+  padding: 0 10px;
+  margin-left: 8px;
+  color: #5b564c;
+}
+
+.card .badge {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: 20px;
+  padding: 0 10px;
+  margin-left: 8px;
+  background: #a31621;
+  color: #fff;
+}
+
+.card p { margin: 4px 0 0; color: #5b564c; }
+
+#venues { list-style: none; padding: 0; }
+
+#venues li { padding: 6px 0; border-bottom: 1px solid #e2ddd4; }
+
+#artists { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
+
+.artist {
+  display: block;
+  border: 1px solid #e2ddd4;
+  border-radius: 8px;
+  padding: 12px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.artist:hover { border-color: #a31621; }
+
+.artist .photo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #efe9dd;
+  color: #a31621;
+  font-size: 1.4rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+
+.artist .photo img { width: 100%; height: 100%; object-fit: cover; }
+
+.artist strong { display: block; }
+
+.artist span { font-size: 0.85rem; color: #5b564c; }
+
+#now-playing li, #up-next li { margin-bottom: 4px; }
+
+.empty { color: #5b564c; }
